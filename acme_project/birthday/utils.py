@@ -1,7 +1,7 @@
 from datetime import date
 
 
-def calculate_birthday_countdown(birthday):
+def calculate_birthday_countdown(birthday: date):
     """
     Возвращает количество дней до следующего дня рождения.
 
@@ -21,7 +21,7 @@ def calculate_birthday_countdown(birthday):
     return (next_birthday - today).days
 
 
-def get_birthday_for_year(birthday, year):
+def get_birthday_for_year(birthday: date, year: int):
     """
     Возвращает дату дня рождения для указанного года.
 

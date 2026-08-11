@@ -1,8 +1,21 @@
+{# templates/birthday/birthday.html #}
 {% extends "base.html" %}
 
 {% block content %}
-    <form>
+  <form method="get">
     {{ form }}
-    <input type="submit" value="Submit">
+    <input type="submit" value="Отправить">
   </form>
+  {% if show_result %}
+    <h2>
+      Привет, {{ first_name }}{% if last_name %} {{ last_name }}{% endif %}!
+    </h2>
+    {% if birthday_countdown == 0 %}
+      <p>С днём рождения!</p>
+    {% else %}
+      <p>
+        Осталось дней до дня рождения: {{ birthday_countdown }}.
+      </p>
+    {% endif %}
+  {% endif %}
 {% endblock %}
