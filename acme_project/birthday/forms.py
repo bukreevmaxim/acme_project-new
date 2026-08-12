@@ -16,5 +16,8 @@ class BirthdayForm(forms.ModelForm):
         # Явно перечисляем поля, доступные пользователю
         fields = ('first_name', 'last_name', 'birthday')
         widgets = {
-            'birthday': forms.DateInput(attrs={'type': 'date'})
+            'birthday': forms.DateInput(
+                format='%Y-%m-%d',
+                attrs={'type': 'date'},
+            ),
         } 

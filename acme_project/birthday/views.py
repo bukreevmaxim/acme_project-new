@@ -1,13 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from .forms import BirthdayForm
 from .models import Birthday
 from .utils import calculate_birthday_countdown
 
 
-def birthday(request):
+def birthday(request, pk=None):
+    if pk is not None:
+        instance = get_object_or_404(Birthday, pk=pk)
+    else:
+        instance = None
+
     form_data = request.POST if request.method == "POST" else None
-    form = BirthdayForm(form_data)
+    form = BirthdayForm(form_data, instance=instance)
     context = {"form": form}
 
     if form.is_valid():
@@ -22,6 +27,17 @@ def birthday(request):
         )
 
     return render(request, "birthday/birthday.html", context)
+
+def delete_birthday(request, pk):
+    instance = get_object_or_404(Birthday, pk=pk)
+
+    if request.method == 'POST':
+        instance.delete()
+        return redirect('birthday:list')
+
+    form = BirthdayForm(instance=instance)
+    context = {'form': form}
+    return render(request, 'birthday/birthday.html', context)
 
 def birthday_list(request):
     # Получаем все объекты модели Birthday из БД
