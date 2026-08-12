@@ -16,10 +16,10 @@
     </div>
   </div>
   {% if show_result %}
-    <p>ID записи в БД: {{ record_id }}</p>
+    <p>ID записи в БД: {{ form.instance.id }}</p>
     <hr>
     <h2>
-        Привет, {{ first_name }}{% if last_name %} {{ last_name }}{% endif %}!
+        Привет, {{ form.instance.first_name }}{% if form.instance.last_name %} {{ form.instance.last_name }}{% endif %}!
     </h2>
 
   {% if birthday_countdown == 0 %}

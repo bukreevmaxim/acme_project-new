@@ -17,9 +17,6 @@ def birthday(request):
                 "birthday_countdown": calculate_birthday_countdown(
                     saved_birthday.birthday,
                 ),
-                "first_name": saved_birthday.first_name,
-                "last_name": saved_birthday.last_name,
-                "record_id": saved_birthday.pk,
                 "show_result": True,
             }
         )
