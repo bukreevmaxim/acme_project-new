@@ -24,7 +24,8 @@ class BirthdayForm(forms.ModelForm):
         fields = (
             'first_name',
             'last_name',
-            'birthday'
+            'birthday',
+            'image',
         )
         widgets = {
             'birthday': forms.DateInput(
