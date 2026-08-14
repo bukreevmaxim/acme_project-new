@@ -12,22 +12,20 @@ from .forms import BirthdayForm
 from .models import Birthday
 from .utils import calculate_birthday_countdown
 
+class BirthdayMixin:
+    model = Birthday
+    form_class = BirthdayForm
 
 class BirthdayListView(ListView):
     model = Birthday
     ordering = 'id'
     paginate_by = 10
 
+class BirthdayCreateView(BirthdayMixin, CreateView):
+    pass
 
-class BirthdayCreateView(CreateView):
-    model = Birthday
-    form_class = BirthdayForm
-
-
-class BirthdayUpdateView(UpdateView):
-    model = Birthday
-    form_class = BirthdayForm
-
+class BirthdayUpdateView(BirthdayMixin, UpdateView):
+    pass
 
 class BirthdayDeleteView(DeleteView):
     model = Birthday
