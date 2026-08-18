@@ -36,6 +36,14 @@
               </span>
             </li>
             <li class="nav-item">
+              <a
+                class="nav-link{% if view_name == 'password_change' %} active{% endif %}"
+                href="{% url 'password_change' %}"
+              >
+                Изменить пароль
+              </a>
+            </li>
+            <li class="nav-item">
               <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button
@@ -53,6 +61,14 @@
                 href="{% url 'login' %}"
               >
                 Войти
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{% if view_name == 'registration' %} active{% endif %}"
+                href="{% url 'registration' %}"
+              >
+                Регистрация
               </a>
             </li>
           {% endif %}
