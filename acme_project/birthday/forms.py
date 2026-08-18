@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 # Импортируем класс модели Birthday
-from .models import Birthday
+from .models import Birthday, Congratulation
 
 BEATLES = {
     'Джон Леннон',
@@ -55,3 +55,9 @@ class BirthdayForm(forms.ModelForm):
             )
 
         return cleaned_data 
+
+class CongratulationForm(forms.ModelForm):
+
+    class Meta:
+        model = Congratulation
+        fields = ('text',)

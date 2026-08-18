@@ -7,7 +7,11 @@ SECRET_KEY = 'django-insecure-acme-project-development-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'testserver'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,6 +23,7 @@ INSTALLED_APPS = [
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
     'django_bootstrap5',
 ]
 
@@ -100,4 +105,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 DEFAULT_FROM_EMAIL = 'noreply@acme.local'
 LOGIN_REDIRECT_URL = 'pages:homepage'
-LOGIN_URL = 'login' 
+LOGIN_URL = 'login'
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
