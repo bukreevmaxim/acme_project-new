@@ -12,24 +12,24 @@
               Главная
             </a>
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link{% if view_name == 'birthday:create' %} active{% endif %}"
-              href="{% url 'birthday:create' %}"
-            >
-              Калькулятор дней рождения
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link{% if view_name == 'birthday:list' %} active{% endif %}"
-              href="{% url 'birthday:list' %}"
-            >
-              Список дней рождения
-            </a>
-          </li>
-
+          
           {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a
+                class="nav-link{% if view_name == 'birthday:create' %} active{% endif %}"
+                href="{% url 'birthday:create' %}"
+              >
+                Калькулятор дней рождения
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link{% if view_name == 'birthday:list' %} active{% endif %}"
+                href="{% url 'birthday:list' %}"
+              >
+                Список дней рождения
+              </a>
+            </li>
             <li class="nav-item">
               <span class="navbar-text">
                 Пользователь: <b>{{ user.username }}</b>
@@ -55,6 +55,14 @@
               </form>
             </li>
           {% else %}
+            <li class="nav-item">
+              <a
+                class="nav-link{% if view_name == 'birthday:list' %} active{% endif %}"
+                href="{% url 'birthday:list' %}"
+              >
+                Список дней рождения
+              </a>
+            </li>
             <li class="nav-item">
               <a
                 class="nav-link{% if view_name == 'login' %} active{% endif %}"

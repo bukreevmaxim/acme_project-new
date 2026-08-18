@@ -1,4 +1,5 @@
 # birthday/models.py
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 
@@ -14,6 +15,13 @@ class Birthday(models.Model):
     )
     birthday = models.DateField('Дата рождения', validators=(real_age,))
     image = models.ImageField('Фото', upload_to='birthdays_images/', blank=True)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='birthdays',
+        verbose_name='Автор записи',
+        null=True,
+    )
 
     class Meta:
         constraints = (
