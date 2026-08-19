@@ -5,6 +5,7 @@ from django.contrib import admin
 # from django.contrib.auth.forms import UserCreationForm
 from django.urls import include, path, reverse_lazy
 from django.views.generic import CreateView
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 from users.forms import CustomUserCreationForm 
 
@@ -33,4 +34,6 @@ if settings.DEBUG:
 
 handler404 = 'core.views.page_not_found'
 handler403 = 'core.views.permission_denied'
-handler500 = 'core.views.server_error' 
+handler500 = 'core.views.server_error'
+
+urlpatterns += debug_toolbar_urls()

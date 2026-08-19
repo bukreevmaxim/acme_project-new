@@ -20,6 +20,9 @@ from .utils import calculate_birthday_countdown
 
 class BirthdayListView(ListView):
     model = Birthday
+    queryset = Birthday.objects.prefetch_related(
+        'tags'
+    ).select_related('author')
     ordering = 'id'
     paginate_by = 10
 
@@ -68,7 +71,7 @@ class BirthdayDetailView(DetailView):
         )
         context['form'] = CongratulationForm()
         context['congratulations'] = (
-            self.object.congratulations.all()
+            self.object.congratulations.select_related('author')
         )
         return context
 
